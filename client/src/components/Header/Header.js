@@ -4,7 +4,7 @@ import "./Header.css"
 const Header = () => (
   
     <div className="container-fluid header">
-        <h1>New York Times Article Scrubber</h1>
+        <p>NYT React Articles</p>
     </div>
   
 );

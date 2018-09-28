@@ -15,13 +15,11 @@ class Search extends Component {
   };
 
   componentDidMount() {
-    this.getSavedArticles()
+    this.getSavedArticles();
   }
 
   handleSaveButton = (event, id) => {
     event.preventDefault();
-    console.log(event);
-    console.log(id);
     const articleData = this.state.articles.find(article => article._id === id);
     console.log(articleData);
     API.saveArticle({ articleData }).then(results => {
@@ -35,14 +33,13 @@ class Search extends Component {
 
   getSavedArticles = () => {
     API.getArticles().then(results => {
-      console.log(results.data)
+      console.log(results.data);
       this.setState({ saved: results.data });
     });
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("HANDLE FORM SUBMIT WORKS");
     if (this.state.article && this.state.startYear && this.state.endYear) {
       API.searchNYT(
         this.state.article,
@@ -51,7 +48,7 @@ class Search extends Component {
       )
         .then(res => {
           this.setState({ articles: res.data.response.docs });
-          console.log("this.state.articles: ", this.state.articles);
+          console.log(res.data);
         })
         .catch(err => console.log(err));
     }
@@ -62,6 +59,16 @@ class Search extends Component {
     this.setState({
       [name]: value
     });
+  };
+
+  handleDeleteButton = (event, id) => {
+    event.preventDefault();
+    console.log(id)
+    API.deleteArticle(id)
+    .then((results) => {
+      console.log(results);
+      this.getSavedArticles();
+    })
   };
 
   render() {
@@ -113,14 +120,14 @@ class Search extends Component {
           </div>
           <div className="col-sm-1" />
         </div>
-        <div className="row">
-          <div className="col-sm-1" />
-          <div className="col-sm-10">
+
+        <div className="card container">
+          <div>
             <br />
-            <div className="card">
+            <div className="container">
               <div className="card-header">
                 <strong>
-                  <i className="fa fa-table" /> Results
+                  <i className="fa fa-table" /> Search Results
                 </strong>
               </div>
               {this.state.articles.map(article => (
@@ -135,22 +142,33 @@ class Search extends Component {
               ))}
             </div>
           </div>
-          <div className="col-sm-1" />
         </div>
 
-        <h2>Saved Articles</h2>
-        <div className="container">
-          {this.state.saved.map(article => (
-            <Saved
-              url={article.url}
-              title={article.title}
-              date={article.date}
-              key={article._id}
-              _id={article._id}
-              handleSaveButton={this.handleSaveButton}
-            />
-          ))}
+        <div className="saved card container">
+          <div className="container">
+            <div className="card-header">
+              <strong>
+                <i className="fa fa-table" /> Saved Articles
+              </strong>
+            </div>
+
+            {this.state.saved.map(article => (
+              <Saved
+                url={article.url}
+                title={article.title}
+                date={article.date}
+                key={article._id}
+                _id={article._id}
+                handleDeleteButton={this.handleDeleteButton}
+              />
+            ))}
+          </div>
         </div>
+
+
+
+
+
       </div>
     );
   }

@@ -30,4 +30,17 @@ module.exports = function (app) {
             return res.json(error);
         });
     })
+
+    app.delete("/api/articles/:id", (req, res) => {
+        console.log(req.body);
+        db.Article.deleteOne({_id:req.params.id})
+        .then(result => {
+            res.json(result)
+            console.log(result)
+        }
+        )
+        .catch((err) => {
+            return res.json(err);
+        })
+    })
 }

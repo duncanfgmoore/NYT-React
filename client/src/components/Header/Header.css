@@ -1,9 +1,9 @@
 .header {
-    height: 70px;
-    font-family: 'Sriracha', cursive;
+    height: 100px;
+    font-family: 'Arvo', serif;
     color: black;
-    background: grey;
+    background: lightcyan;
     text-align: center;
-    margin-bottom: 4px;
-    padding-top: 10px;
+    font-size: 48px;
+    padding-top: 20px;
 }
