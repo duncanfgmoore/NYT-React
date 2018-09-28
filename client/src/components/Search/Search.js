@@ -109,7 +109,7 @@ class Search extends Component {
                   <button
                     type="submit"
                     onClick={this.handleFormSubmit}
-                    className="btn btn-default margin-right"
+                    className="btn btn-success margin-right"
                     id="run-search"
                   >
                     <i className="fa fa-search" /> Search
@@ -121,10 +121,11 @@ class Search extends Component {
           <div className="col-sm-1" />
         </div>
 
-        <div className="card container">
+      
+        <div className=" container card">
           <div>
             <br />
-            <div className="container">
+            <div>
               <div className="card-header">
                 <strong>
                   <i className="fa fa-table" /> Search Results
@@ -144,8 +145,8 @@ class Search extends Component {
           </div>
         </div>
 
-        <div className="saved card container">
-          <div className="container">
+        <div className="saved container card">
+          <div>
             <div className="card-header">
               <strong>
                 <i className="fa fa-table" /> Saved Articles

@@ -5,3 +5,8 @@
 .card {
     border: solid 0px white;
 }
+
+.card-box {
+    background-color: rgb(245, 245, 234);
+}
+

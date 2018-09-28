@@ -13,14 +13,8 @@ const Saved = props => {
             </h2>
             <p>{date}</p>
           </div>
-          <div className="card-link">
-            <a
-              className="c-link"
-              onClick={event => props.handleDeleteButton(event, props._id)}
-            >
-              Delete Article
-              <i className="fa fa-angle-right" />
-            </a>
+          <div className="card-link"> 
+            <button className="btn btn-danger" onClick={event => props.handleDeleteButton(event, props._id)}> Delete Article</button>
           </div>
         </div>
       </div>
