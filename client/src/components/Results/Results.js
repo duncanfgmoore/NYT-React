@@ -14,7 +14,7 @@ const Results = props => {
             <p>{date}</p>
           </div>
           <div className="card-link">
-          <button className="btn btn-warning" onClick={event => props.handlesaveButton(event, props._id)}> Save Article</button>
+          <button className="btn btn-warning" onClick={event => props.handleSaveButton(event, props._id)}> Save Article</button>
           </div>
         </div>
       </div>

@@ -23,12 +23,13 @@ class Search extends Component {
     const articleData = this.state.articles.find(article => article._id === id);
     console.log(articleData);
     API.saveArticle({ articleData }).then(results => {
-      const filteredResults = this.state.saved.filter(
+      const filteredResults = this.state.articles.filter(
         article => article._id !== id
       );
-      this.setState({ saved: filteredResults });
+      this.setState({ articles: filteredResults });
+      this.getSavedArticles();
     });
-    window.location.reload();
+  
   };
 
   getSavedArticles = () => {
